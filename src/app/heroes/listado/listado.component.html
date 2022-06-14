@@ -1,0 +1,33 @@
+<p>Listado de Héroes</p>
+
+<!--ngIf="" regresa una condicion.Si se llama a heroeBorrado aparecera el <h3> heroe
+borrado en consola.Else(de lo contrario) llamara al ng-template #noBorrado
+que reflejara el <h3>No ha borrado nada.</h3>-->
+<div *ngIf="heroeBorrado; else noBorrado">
+    <!--titulo(<h3>): + el  nombre del heroe borrado el consola-->  
+   <h3>Héroe borrado: <small>{{heroeBorrado}} </small></h3> 
+</div>
+
+<!--ng-template #noBorrado> que sera llamado si no se borra ningun heroe:
+los template suelen llamar referencias locales(desde el mismo archivo html)-->
+
+<ng-template #noBorrado>
+     <h3>No ha borrado nada.</h3> 
+</ng-template>
+
+<!--Boton llamado borrar que llamara a la function borrarHeroe()-->
+<button (click)="borrarHeroe()">
+    borrar
+</button>
+
+<ul>
+  <!--Con el metodo *ngFor="" llamaremos a todos los heroes 
+      dentro del array heroes(let heroe of heroes)
+    para que se añada delante de cada heroe un numero 
+    decalramos la variable i = index y la llamamos{{i + 1}}
+  con + 1 en vez de contar desde 0 contara desde 1-->
+  <li *ngFor="let heroe of heroes; let i = index">
+    {{i + 1}}  {{heroe}} 
+  </li>
+</ul>
+
